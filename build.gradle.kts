@@ -31,7 +31,7 @@ kotlin {
                 sourceMaps = false
                 devServer = KotlinWebpackConfig.DevServer(
                     open = false,
-                    port = 3000,
+                    port = 8080,
                     proxy = mutableMapOf(
                         "/kv/*" to "http://localhost:8080",
                         "/kvws/*" to mapOf("target" to "ws://localhost:8080", "ws" to true)
