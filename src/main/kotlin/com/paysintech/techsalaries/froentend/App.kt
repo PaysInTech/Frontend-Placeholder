@@ -17,13 +17,12 @@ class App : Application() {
         root("root") {
             navbar("TechSalaries [PaysInTech InfoSolutions LLP]") {
                 bgColor = BsBgColor.PRIMARY
-                nColor = NavbarColor.LIGHT
                 expand = NavbarExpand.XXL
             }
             br()
             h1("We're under development")
             h3("Please do check back shortly")
-            if(Random(2).nextInt() % 2 == 0) {
+            if(Random(10).nextBoolean()) {
                 p("We can rise by lifting others")
             } else {
                 p("By Techies for Techies")
