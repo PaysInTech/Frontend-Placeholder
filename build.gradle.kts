@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
 
 plugins {
     val kotlinVersion: String by System.getProperties()
@@ -51,6 +52,12 @@ kotlin {
         binaries.executable()
     }
     sourceSets["main"].dependencies {
+        implementation(npm("sass", "^1.29.0"))
+        implementation(npm("sass-loader", "^10.1.0"))
+        implementation(npm("marked", "^1.2.4"))
+        implementation(npm("smooth-scroll", "^16.1.3"))
+        implementation(npm("@types/smooth-scroll", "*"))
+
         implementation("io.kvision:kvision:$kvisionVersion")
         implementation("io.kvision:kvision-bootstrap:$kvisionVersion")
         implementation("io.kvision:kvision-bootstrap-css:$kvisionVersion")
@@ -65,4 +72,22 @@ kotlin {
         implementation("io.kvision:kvision-testutils:$kvisionVersion")
     }
     sourceSets["main"].resources.srcDir(webDir)
+}
+afterEvaluate {
+    tasks {
+        create("dist", Copy::class) {
+            dependsOn("browserProductionWebpack")
+            group = "package"
+            destinationDir = file("$buildDir/dist")
+            val distribution =
+                project.tasks.getByName("browserProductionWebpack", KotlinWebpack::class).destinationDirectory
+            from(distribution) {
+                include("*.*")
+            }
+            from(webDir)
+            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+            inputs.files(distribution, webDir)
+            outputs.files(destinationDir)
+        }
+    }
 }
