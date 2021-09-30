@@ -6,7 +6,6 @@ import io.kvision.html.br
 import io.kvision.html.h1
 import io.kvision.html.h3
 import io.kvision.html.p
-import io.kvision.navbar.NavbarColor
 import io.kvision.navbar.NavbarExpand
 import io.kvision.navbar.navbar
 import io.kvision.panel.root
@@ -36,7 +35,6 @@ fun main() {
         ::App,
         module.hot,
         BootstrapModule,
-        BootstrapCssModule,
         BootstrapSpinnerModule,
         BootstrapTypeaheadModule,
         CoreModule

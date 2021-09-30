@@ -60,7 +60,6 @@ kotlin {
 
         implementation("io.kvision:kvision:$kvisionVersion")
         implementation("io.kvision:kvision-bootstrap:$kvisionVersion")
-        implementation("io.kvision:kvision-bootstrap-css:$kvisionVersion")
         implementation("io.kvision:kvision-bootstrap-spinner:$kvisionVersion")
         implementation("io.kvision:kvision-bootstrap-typeahead:$kvisionVersion")
         implementation("io.kvision:kvision-state:$kvisionVersion")
