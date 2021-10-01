@@ -21,10 +21,8 @@ class App : Application() {
             br()
             h1("We're under development")
             h3("Please do check back shortly")
-            if(Random(10).nextBoolean()) {
-                p("We can rise by lifting others")
-            } else {
-                p("By Techies for Techies")
+            listOf("We can rise by lifting others", "By Techies for Techies with Techies").random().apply {
+                p(this)
             }
         }
     }
