@@ -24,6 +24,8 @@ val kvisionVersion: String by System.getProperties()
 
 val webDir = file("src/main/web")
 
+val deployDomain = "www.techsalaries.app"
+
 kotlin {
     js {
         browser {
@@ -87,6 +89,13 @@ afterEvaluate {
             duplicatesStrategy = DuplicatesStrategy.EXCLUDE
             inputs.files(distribution, webDir)
             outputs.files(destinationDir)
+            doLast {
+                val cname = file("$destinationDir/CNAME")
+                if (!cname.exists()) {
+                    cname.createNewFile()
+                }
+                cname.writeText(deployDomain)
+            }
         }
     }
 }
